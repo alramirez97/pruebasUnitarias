@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 
-var Comercio = require('../../models/comercio.js')
+var Comercio = require('../../models/comercio.js');
+const ObtenerListado = async () => {
+        const list = await Comercio.todos()
+        return list.length;
+}
 
 describe('Test modelo Comercio',function(){
 
@@ -29,26 +33,39 @@ describe('Test modelo Comercio',function(){
 
 
 
-    // describe('Comprobar si hay comercios con X nombre', () => {
-    //     it('comienza vacía', (done) => {
-    //         Comercio.buscarNombre('lolita',function(err, cb){
-    //             expect(cb.length).toBe(5);
-    //             done()
-    //         })
-    //     })
-    // })
+     /*describe('Comprobar si hay comercios con X nombre', () => {
+         it('comienza vacía', (done) => {
+             Comercio.buscarNombre('lolita',function(err, cb){
+                 expect(cb.length).toBe(5);
+                done()
+             })
+         })
+     })*/
+     describe('Comprobar POST', () =>{
+        it('POST prueba', async (done) => {
+            const ObtenerLis = await ObtenerListado();
+            const comercio = Comercio.Constructor('Comercio prueba 13', 'Aqui donde estoy')
+            Comercio.create( comercio, async (err, comercio) => {
+                const Obtenernew = await ObtenerListado();
+                expect(err).withContext('error en la consulta').toBeNull();
+                expect(Obtenernew).toBe(ObtenerLis + 1);
+                done()
+            })
+        })
+     });
+     
 
     /*describe('Comprobar save', () => {
         it('loading', (done) => {
             const comerciosave = Comercio.Constructor('Comercio 2','Tangamadapio')
             Comercio.create(comerciosave,function(err, cb){
-                expect(err).toBe(null);
+                expect(err).toBeNull();
                 done()
             })
         })
     });*/
 
-    describe('Comprobar update', () => {
+    /*describe('Comprobar update', () => {
          it('loading', (done) => {
              const comerciosave = {nombre: 'Comercio 7 actualizado', direccion: 'Tangamandapio actualizado', _id: '6142ac2c2d9355b8d0c92fda'}
              Comercio.update(comerciosave, '6142ac2c2d9355b8d0c92fda',function(err, cb){
@@ -56,7 +73,7 @@ describe('Test modelo Comercio',function(){
                  done()
              })
         })
-     })
+     })*/
 
      /*describe('Comprobar eliminar', () => {
         it('loading', (done) => {
