@@ -17,8 +17,8 @@ ComercioSchema.statics.todos = function(cb){
     return this.find({},cb);
 }
 
-ComercioSchema.statics.buscarNombre = function(nombre,cb){
-    return this.find({nombre: nombre},cb);
+ComercioSchema.statics.buscarId = function(_id,cb){
+    return this.find({_id: _id},cb);
 }
 
 ComercioSchema.statics.create = function(entidad,cb) {
