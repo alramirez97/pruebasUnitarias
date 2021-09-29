@@ -42,10 +42,10 @@ describe('Test modelo Comercio',function(){
      })*/
 
      /// --------------------- POST -------------------------- ////////////////
-     /*describe('Comprobar POST', () =>{
+     describe('Comprobar POST', () =>{
         it('POST prueba', async (done) => {
             const ObtenerLis = await ObtenerListado();
-            const comercio = Comercio.Constructor('Comercio prueba 14', 'Aqui donde estoy')
+            const comercio = Comercio.Constructor('Comercio prueba 1', 'Chalatenango')
             Comercio.create( comercio, async (err, comercio) => {
                 const Obtenernew = await ObtenerListado();
                 expect(err).withContext('error en la consulta').toBeNull();
@@ -53,7 +53,7 @@ describe('Test modelo Comercio',function(){
                 done()
             })
         })
-     });*/
+     });
      
      /// ---------------------Otra prueba de POST --------------/////
     /*describe('Comprobar save', () => {
